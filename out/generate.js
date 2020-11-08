@@ -36,8 +36,13 @@ exports.generateComponent = (file) => {
     const featureSelection = [
         constants_1.CONSTANTS.FEATURES.TS
     ];
+    const featureSelectionOptions = {
+        canPickMany: true,
+        placeHolder: "Select features to be included",
+        ignoreFocusOut: true
+    };
     vscode.window.showQuickPick(frameworkOptionSelection).then(selectedFramework => {
-        vscode.window.showQuickPick(featureSelection).then(selectedFeatures => {
+        vscode.window.showQuickPick(featureSelection, featureSelectionOptions).then(selectedFeatures => {
             if (selectedFramework === constants_1.CONSTANTS.FRAMEWORKS.VUEJS) {
                 vscode.window
                     .showInputBox({
@@ -50,7 +55,6 @@ exports.generateComponent = (file) => {
                     if (!name) {
                         return;
                     }
-                    // const COMPONENT_TEMPLATE = selectedFramework.includes(constants_1.CONSTANTS.FEATURES.TS) ? vue_1.default.TS_TEMPLATE : vue_1.default.JS_TEMPLATE;
                     const componentName = name.charAt(0).toUpperCase() + name.slice(1);
                     const dir = exports.findDir(file.fsPath);
                     if (selectedFeatures === constants_1.CONSTANTS.FEATURES.TS) {
@@ -71,7 +75,6 @@ exports.generateComponent = (file) => {
                     if (!name) {
                         return;
                     }
-                    // const COMPONENT_TEMPLATE = selectedFramework.includes(constants_1.CONSTANTS.FEATURES.TS) ? vue_1.default.TS_TEMPLATE : vue_1.default.JS_TEMPLATE;
                     const componentName = name.charAt(0).toUpperCase() + name.slice(1);
                     const dir = exports.findDir(file.fsPath);
                     if (selectedFeatures === constants_1.CONSTANTS.FEATURES.TS) {
