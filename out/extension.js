@@ -8,7 +8,7 @@ const generate_1 = require("./generate");
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 function activate(context) {
-    context.subscriptions.push(vscode.commands.registerCommand("vue-generator.generator-component", generate_1.generateComponent));
+    context.subscriptions.push(vscode.commands.registerCommand("vue-creator.creator-component", generate_1.generateComponent));
 }
 exports.activate = activate;
 // this method is called when your extension is deactivated

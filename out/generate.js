@@ -4,7 +4,6 @@ exports.generateComponent = exports.makeFileSync = exports.makeDirSync = exports
 const vscode = require("vscode");
 const fs = require("fs");
 const path = require("path");
-const component_1 = require("./text/component");
 const vue_1 = require("./templates/vue");
 const vue_2 = require("./templates/vue-component");
 const constants_1 = require("./constants");

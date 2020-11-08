@@ -1,6 +1,6 @@
 {
-	"name": "vue-generator",
-	"displayName": "Vue Generator",
+	"name": "vue-creator",
+	"displayName": "Vue File Creator",
 	"description": "A small extension to create vue vanilla files and class component files",
 	"version": "1.0.0",
 	"publisher": "shocker18",
@@ -12,14 +12,17 @@
 	"icon": "public/vue.png",
 	"repository": {
 		"type": "git",
-		"url": ""
+		"url": "https://github.com/shocker18/vue-file-creator"
 	},
-	"homepage": "",
+	"homepage": "https://github.com/shocker18/vue-file-creator",
 	"engines": {
 		"vscode": "^1.45.0"
 	},
 	"keywords": [
+		"vue creator",
 		"vue generator",
+		"file creator",
+		"file generator",
 		"create files",
 		"create folders"
 	],
@@ -31,20 +34,20 @@
 		"theme": "dark"
 	},
 	"activationEvents": [
-		"onCommand:vue-generator.generator-component"
+		"onCommand:vue-creator.creator-component"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "vue-generator.generator-component",
-				"title": "Vue Generator Component"
+				"command": "vue-creator.creator-component",
+				"title": "Create Vue Component"
 			}
 		],
 		"menus": {
 			"explorer/context": [
 				{
-					"command": "vue-generator.generator-component"
+					"command": "vue-creator.creator-component"
 				}
 			]
 		}
