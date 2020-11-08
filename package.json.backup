@@ -1,0 +1,79 @@
+{
+	"name": "vue-file-creator",
+	"displayName": "Vue file creator",
+	"description": "Create Vue vanilla files and Class Component Files",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.49.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:vue-file-creator.createVueFile"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.createComponent",
+				"title": "Create Vue Component"
+			},
+			{
+				"command": "extension.createFile",
+				"title": "Create Vue File"
+			},
+			{
+				"command": "vue-file-creator.createVueFile",
+				"title": "Create Vue Component"
+			},
+			{
+				"command": "vue-file-creator.createVueFile",
+				"title": "Create Vue TS Component"
+			}
+		],
+		"menus": {
+			"explorer/context": [
+				{
+					"command": "extension.createComponent",
+					"group": "vue-file-creator"
+				},
+				{
+					"command": "extension.createFile",
+					"group": "vue-file-creator"
+				},
+				{
+					"command": "vue-file-creator.createVueFile",
+					"group": "vue-file-creator"
+				}
+			]
+		},
+		"configuration": {
+			"type": "object",
+			"title": "Vue Create Component configuration",
+			"properties": {
+				"vueCreateComponent.customPaths": {
+					"type": "array",
+					"default": [],
+					"description": "An array of custom paths. The path must be relative to the workspace directory. Please provied each path as an object which should contain a name and a path: { \"name\": \"default\", \"path\": \"./\" }"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.49.0",
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.0.0",
+		"@types/node": "^14.0.27",
+		"eslint": "^7.6.0",
+		"glob": "^7.1.6",
+		"mocha": "^8.1.3",
+		"typescript": "^4.0.2",
+		"vscode-test": "^1.4.0"
+	}
+}

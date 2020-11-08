@@ -1,0 +1,78 @@
+{
+	"name": "vue-generator",
+	"displayName": "Vue Generator",
+	"description": "A small extension to create vue vanilla files and class component files",
+	"version": "1.0.0",
+	"publisher": "shocker18",
+	"author": {
+		"name": "shocker18 | Lucas Rudhoff",
+		"email": "rud.lucas01@gmail.com",
+		"url": "https://github.com/shocker18"
+	},
+	"icon": "public/vue.png",
+	"repository": {
+		"type": "git",
+		"url": ""
+	},
+	"homepage": "",
+	"engines": {
+		"vscode": "^1.45.0"
+	},
+	"keywords": [
+		"vue generator",
+		"create files",
+		"create folders"
+	],
+	"categories": [
+		"Other"
+	],
+	"galleryBanner": {
+		"color": "#563A8E",
+		"theme": "dark"
+	},
+	"activationEvents": [
+		"onCommand:vue-generator.generator-component"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "vue-generator.generator-component",
+				"title": "Vue Generator Component"
+			}
+		],
+		"menus": {
+			"explorer/context": [
+				{
+					"command": "vue-generator.generator-component"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "eslint src --ext ts",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.45.0",
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^7.0.2",
+		"@types/node": "^13.11.0",
+		"eslint": "^6.8.0",
+		"@typescript-eslint/parser": "^2.30.0",
+		"@typescript-eslint/eslint-plugin": "^2.30.0",
+		"glob": "^7.1.6",
+		"mocha": "^7.1.2",
+		"typescript": "^3.8.3",
+		"vscode-test": "^1.3.0"
+	},
+	"__metadata": {
+		"id": "cf4cfd67-a4a7-4fb7-b541-4c2f4ff934a7",
+		"publisherId": "98e45fb8-7323-47c2-939d-1868995abaa6",
+		"publisherDisplayName": "polo"
+	}
+}
