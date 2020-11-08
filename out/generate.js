@@ -43,6 +43,7 @@ exports.generateComponent = (file) => {
     };
     vscode.window.showQuickPick(frameworkOptionSelection).then(selectedFramework => {
         vscode.window.showQuickPick(featureSelection, featureSelectionOptions).then(selectedFeatures => {
+            console.log(selectedFeatures);
             if (selectedFramework === constants_1.CONSTANTS.FRAMEWORKS.VUEJS) {
                 vscode.window
                     .showInputBox({
@@ -57,7 +58,7 @@ exports.generateComponent = (file) => {
                     }
                     const componentName = name.charAt(0).toUpperCase() + name.slice(1);
                     const dir = exports.findDir(file.fsPath);
-                    if (selectedFeatures === constants_1.CONSTANTS.FEATURES.TS) {
+                    if (selectedFeatures.includes(constants_1.CONSTANTS.FEATURES.TS)) {
                         exports.makeFileSync(`${dir}/${componentName}.vue`, vue_1.TS_TEMPLATE.replace(/{componentName}/g, componentName));
                     } else {
                         exports.makeFileSync(`${dir}/${componentName}.vue`, vue_1.JS_TEMPLATE.replace(/{componentName}/g, componentName));
@@ -77,7 +78,7 @@ exports.generateComponent = (file) => {
                     }
                     const componentName = name.charAt(0).toUpperCase() + name.slice(1);
                     const dir = exports.findDir(file.fsPath);
-                    if (selectedFeatures === constants_1.CONSTANTS.FEATURES.TS) {
+                    if (selectedFeatures.includes(constants_1.CONSTANTS.FEATURES.TS)) {
                         exports.makeFileSync(`${dir}/${componentName}.vue`, vue_2.TS_TEMPLATE.replace(/{componentName}/g, componentName));
                     } else {
                         exports.makeFileSync(`${dir}/${componentName}.vue`, vue_2.JS_TEMPLATE.replace(/{componentName}/g, componentName));
