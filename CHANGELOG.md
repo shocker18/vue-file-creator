@@ -1,9 +1,11 @@
 # Change Log
 
-All notable changes to the "vue-file-creator" extension will be documented in this file.
+## 1.1.0
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+Added:
+- create vuex
+- namespaced module
 
-## [Unreleased]
+## 1.0.0
 
 - Initial release

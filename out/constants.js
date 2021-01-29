@@ -4,10 +4,12 @@ exports.CONSTANTS = void 0;
 exports.CONSTANTS = {
     FRAMEWORKS: {
         VUECOMPONENTS: "Vue Class Components",
-        VUEJS: "VueJS"
+        VUEJS: "VueJS",
+        VUEX: "Vuex"
     },
     FEATURES: {
-        TS: "Use Typescript"
+        TS: "Use Typescript",
+        NS: "Namespaced module"
     }
 };
 //# sourceMappingURL=constants.js.map

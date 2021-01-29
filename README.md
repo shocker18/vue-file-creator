@@ -7,7 +7,7 @@
 
   
 
-This extension allows you to create vue vanilla files and vue class component files with one click.
+This extension allows you to create vue vanilla files, vue class component and vuex files with one click.
 
   
 
@@ -19,6 +19,10 @@ Choose between:
 
 - Class Component File
 
+- Vuex Store
+
+- Namespaced Modules
+
 - File with TypeScript
 
 - File without TypeScript
@@ -27,9 +31,3 @@ Choose between:
 
 - right click in the path where you want to create your file
 - click on Create Vue File and choose what you want to create
-
-### 1.0.0
-
-  
-
-Initial release of Vue Creator

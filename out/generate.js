@@ -6,6 +6,7 @@ const fs = require("fs");
 const path = require("path");
 const vue_1 = require("./templates/vue");
 const vue_2 = require("./templates/vue-component");
+const vuex = require("./templates/vuex");
 const constants_1 = require("./constants");
 exports.findDir = (filePath) => {
     if (fs.statSync(filePath).isFile()) {
@@ -31,10 +32,15 @@ exports.makeFileSync = (filename, content) => {
 exports.generateComponent = (file) => {
     const frameworkOptionSelection = [
         constants_1.CONSTANTS.FRAMEWORKS.VUECOMPONENTS,
-        constants_1.CONSTANTS.FRAMEWORKS.VUEJS
+        constants_1.CONSTANTS.FRAMEWORKS.VUEJS,
+        constants_1.CONSTANTS.FRAMEWORKS.VUEX
     ];
     const featureSelection = [
         constants_1.CONSTANTS.FEATURES.TS
+    ];
+    const featureSelectionVuex = [
+        constants_1.CONSTANTS.FEATURES.TS,
+        constants_1.CONSTANTS.FEATURES.NS
     ];
     const featureSelectionOptions = {
         canPickMany: true,
@@ -42,7 +48,7 @@ exports.generateComponent = (file) => {
         ignoreFocusOut: true
     };
     vscode.window.showQuickPick(frameworkOptionSelection).then(selectedFramework => {
-        vscode.window.showQuickPick(featureSelection, featureSelectionOptions).then(selectedFeatures => {
+        vscode.window.showQuickPick(selectedFramework === constants_1.CONSTANTS.FRAMEWORKS.VUEX ? featureSelectionVuex : featureSelection, featureSelectionOptions).then(selectedFeatures => {
             console.log(selectedFeatures);
             if (selectedFramework === constants_1.CONSTANTS.FRAMEWORKS.VUEJS) {
                 vscode.window
@@ -82,6 +88,30 @@ exports.generateComponent = (file) => {
                         exports.makeFileSync(`${dir}/${componentName}.vue`, vue_2.TS_TEMPLATE.replace(/{componentName}/g, componentName));
                     } else {
                         exports.makeFileSync(`${dir}/${componentName}.vue`, vue_2.JS_TEMPLATE.replace(/{componentName}/g, componentName));
+                    }
+                });
+            } else if (selectedFramework === constants_1.CONSTANTS.FRAMEWORKS.VUEX) {
+                vscode.window
+                    .showInputBox({
+                    value: "",
+                    prompt: "Store name",
+                    ignoreFocusOut: true,
+                    // valueSelection: [-1, -1],
+                })
+                    .then((name) => {
+                    if (!name) {
+                        return;
+                    }
+                    const storeName = name.charAt(0).toUpperCase() + name.slice(1);
+                    const dir = exports.findDir(file.fsPath);
+                    if (selectedFeatures.includes(constants_1.CONSTANTS.FEATURES.TS) && selectedFeatures.includes(constants_1.CONSTANTS.FEATURES.NS)) {
+                        exports.makeFileSync(`${dir}/${storeName}.ts`, vuex.MODULE_TEMPLATE);
+                    } else if (selectedFeatures.includes(constants_1.CONSTANTS.FEATURES.NS)) {
+                        exports.makeFileSync(`${dir}/${storeName}.js`, vuex.MODULE_TEMPLATE);
+                    } else if (selectedFeatures.includes(constants_1.CONSTANTS.FEATURES.TS)) {
+                        exports.makeFileSync(`${dir}/${storeName}.ts`, vuex.VUEX_TEMPLATE);
+                    } else {
+                        exports.makeFileSync(`${dir}/${storeName}.js`, vuex.VUEX_TEMPLATE);
                     }
                 });
             }
