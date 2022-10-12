@@ -1,8 +1,8 @@
 {
 	"name": "vue-creator",
 	"displayName": "Vue File Creator",
-	"description": "A small extension to create vue vanilla files and class component files. You also can create them with Typescript or without",
-	"version": "1.1.0",
+	"description": "A small extension to create Vue 2 and Vue 3 vanilla files and class component files. You also can create them with Typescript or without",
+	"version": "1.2.0",
 	"publisher": "shocker18",
 	"author": {
 		"name": "shocker18 | Lucas Rudhoff",

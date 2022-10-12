@@ -4,6 +4,7 @@ exports.CONSTANTS = void 0;
 exports.CONSTANTS = {
     FRAMEWORKS: {
         VUECOMPONENTS: "Vue Class Components",
+        VUE3COMPONENTS: "Vue 3 Class Components",
         VUEJS: "VueJS",
         VUEX: "Vuex"
     },

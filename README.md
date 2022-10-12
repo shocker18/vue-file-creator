@@ -7,7 +7,7 @@
 
   
 
-This extension allows you to create vue vanilla files, vue class component and vuex files with one click.
+This extension allows you to create Vue 2 and Vue 3 vanilla files, vue class component and vuex files with one click.
 
   
 

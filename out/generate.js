@@ -6,6 +6,7 @@ const fs = require("fs");
 const path = require("path");
 const vue_1 = require("./templates/vue");
 const vue_2 = require("./templates/vue-component");
+const vue_3_class_components = require("./templates/vue3-class-component");
 const vuex = require("./templates/vuex");
 const constants_1 = require("./constants");
 exports.findDir = (filePath) => {
@@ -32,6 +33,7 @@ exports.makeFileSync = (filename, content) => {
 exports.generateComponent = (file) => {
     const frameworkOptionSelection = [
         constants_1.CONSTANTS.FRAMEWORKS.VUECOMPONENTS,
+        constants_1.CONSTANTS.FRAMEWORKS.VUE3COMPONENTS,
         constants_1.CONSTANTS.FRAMEWORKS.VUEJS,
         constants_1.CONSTANTS.FRAMEWORKS.VUEX
     ];
@@ -88,6 +90,26 @@ exports.generateComponent = (file) => {
                         exports.makeFileSync(`${dir}/${componentName}.vue`, vue_2.TS_TEMPLATE.replace(/{componentName}/g, componentName));
                     } else {
                         exports.makeFileSync(`${dir}/${componentName}.vue`, vue_2.JS_TEMPLATE.replace(/{componentName}/g, componentName));
+                    }
+                });
+            } else if (selectedFramework === constants_1.CONSTANTS.FRAMEWORKS.VUE3COMPONENTS) {
+                vscode.window
+                    .showInputBox({
+                    value: "",
+                    prompt: "Component name",
+                    ignoreFocusOut: true,
+                    valueSelection: [-1, -1],
+                })
+                    .then((name) => {
+                    if (!name) {
+                        return;
+                    }
+                    const componentName = name.charAt(0).toUpperCase() + name.slice(1);
+                    const dir = exports.findDir(file.fsPath);
+                    if (selectedFeatures.includes(constants_1.CONSTANTS.FEATURES.TS)) {
+                        exports.makeFileSync(`${dir}/${componentName}.vue`, vue_3_class_components.TS_TEMPLATE.replace(/{componentName}/g, componentName));
+                    } else {
+                        exports.makeFileSync(`${dir}/${componentName}.vue`, vue_3_class_components.JS_TEMPLATE.replace(/{componentName}/g, componentName));
                     }
                 });
             } else if (selectedFramework === constants_1.CONSTANTS.FRAMEWORKS.VUEX) {
